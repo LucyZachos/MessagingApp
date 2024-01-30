@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<head>
+    <title>Banking App</title>
+    <!-- CSS Styling -->
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            border: 2px solid #333;
+            padding: 20px;
+            max-width: 50%;
+        }
+        .form-label {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .h1 {
+            font-family: Arial, sans-serif;
+        }
+        /* Style for list items (remove bullet points) */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h:form styleClass="form-container">
+        <!-- Page title -->
+        <h1>Received Messages:</h1>
+        <!-- Loop through received messages and display them in a list -->
+        <ul>
+            <ui:repeat value="#{ReceiverBean.receivedMessages}" var="message">
+                <li><h:outputText value="#{message}" /></li>
+            </ui:repeat>
+        </ul>
+
+        <!-- Add a button to start the message listener -->
+        <h:commandButton value="Get Message" action="#{ReceiverBean.retrieveMessages}" />
+    </h:form>
+</body>
+</html>
