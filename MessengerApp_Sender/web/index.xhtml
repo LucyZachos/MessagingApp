@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+    <title>e-Commerce App</title>
+    <!-- CSS styling -->
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .confirmation-message {
+            color: green;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .form-container {
+            border: 2px solid #333;
+            padding: 20px;
+            max-width: 50%;
+        }
+        .form-label {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .h1 {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</h:head>
+<h:body>
+    <h:form styleClass="form-container">
+        <!-- Page Title -->
+        <h1 class="h1">Send Message</h1>
+
+        <!-- Message Input Field -->
+        <h:outputLabel for="message" styleClass="form-label">Message: </h:outputLabel>
+        <h:inputText id="message" value="#{SenderBean.message}" />
+
+        <!-- Send Button -->
+        <h:commandButton value="Send Message" action="#{SenderBean.sendMessages}" />
+
+        <!-- Display error or validation messages -->
+        <h:messages styleClass="confirmation-message" />
+
+        <!-- Confirmation Message -->
+        <div>
+            <!-- Display the confirmation message if it's not empty -->
+            <h:outputText value="#{SenderBean.confirmationMessage}" 
+                          rendered="#{not empty SenderBean.confirmationMessage}" 
+                          styleClass="confirmation-message" />
+        </div>
+    </h:form>
+</h:body>
+</html>
